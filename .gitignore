@@ -1,0 +1,47 @@
+# Ignore build directories
+bin/
+obj/
+
+# Ignore NuGet packages
+/packages/
+
+# Rider and Resharper files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.DotSettings
+
+# Rider project files
+.idea/
+*.iml
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/assetWizard.iml
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/libraries
+.idea/_workspace.xml
+.idea/codeStyles/
+.idea/scopes/
+.idea/libraries/
+.idea/riderModule.iml
+.idea/.idea/
+.idea/inspectionProfiles/
+
+# ReSharper files
+_ReSharper.Caches/
+
+# VS Code settings
+.vscode/

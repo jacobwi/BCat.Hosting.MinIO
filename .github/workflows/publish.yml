@@ -1,0 +1,76 @@
+﻿name: Publish Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Get Version
+        id: version
+        shell: bash
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version-without-v=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Pack
+        run: dotnet pack --configuration Release /p:Version=${{ steps.version.outputs.version-without-v }} -p:PackageId=BCat.Hosting.MinIO --output .
+
+      # Add GitHub Packages source
+      - name: Add GitHub Source
+        run: |
+          dotnet nuget add source --username jacobwi --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/jacobwi/index.json"
+
+      # Push to GitHub Packages
+      - name: Push to GitHub Packages
+        run: |
+          dotnet nuget push *.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+
+      # Push to NuGet.org
+      - name: Push to NuGet
+        run: |
+          dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*.nupkg"
+          name: Release ${{ steps.version.outputs.version }}
+          body: |
+            Release of version ${{ steps.version.outputs.version }}
+            
+            ### What's Changed
+            - Added MinIO integration for .NET Aspire
+            - Support for custom ports (API and Console)
+            - Configurable credentials
+            - Data volume persistence
+            - S3-compatible endpoint configuration
+            - Connection string support
+            
+            ### Getting Started
+            ```csharp
+            var builder = DistributedApplication.CreateBuilder(args);
+            var minio = builder.AddMinIO("storage", options => options
+                .WithPorts(apiPort: 9000, consolePort: 9001)
+                .WithCredentials("accesskey", "secretkey"));
+            ```
+          draft: true
+          allowUpdates: true

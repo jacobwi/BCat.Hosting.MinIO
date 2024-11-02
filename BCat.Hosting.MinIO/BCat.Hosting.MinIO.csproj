@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <!--<TargetFramework>$(DefaultTargetFramework)</TargetFramework>-->
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsPackable>true</IsPackable>
+        <Nullable>enable</Nullable>
+        <PackageTags>aspire integration hosting minio s3</PackageTags>
+        <Description>Minio support for .NET Aspire.</Description>
+        <Version>8.2.2.0</Version>
+        <Authors>BCat</Authors>
+        <PackageIcon>favicon.png</PackageIcon>
+        <PackageId>BCat.Aspire.MinIO</PackageId>
+        <Title>BCat.Aspire.MinIO</Title>
+        <RootNamespace>Aspire.Hosting.MinIO</RootNamespace>
+        <Copyright>Copyright 2024 BCat</Copyright>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <!-- Source Link -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <!-- Package Info -->
+        <PackageProjectUrl>https://github.com/jacobwi/BCat.Hosting.MailDev</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jacobwi/BCat.Hosting.MailDev</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting" Version="8.2.2"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <!-- Include the icon file in the package -->
+        <None Include="assets\favicon.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <!-- Include the README in the package -->
+        <None Include="../README.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+</Project>
