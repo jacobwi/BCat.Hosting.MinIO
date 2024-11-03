@@ -1,3 +1,7 @@
+[![NuGet](https://img.shields.io/nuget/v/BCat.Hosting.MinIO.svg)](https://www.nuget.org/packages/BCat.Hosting.MinIO)
+[![Downloads](https://img.shields.io/nuget/dt/BCat.Hosting.MinIO.svg)](https://www.nuget.org/packages/BCat.Hosting.MinIO)
+
+
 # Aspire.Hosting.MinIO
 
 MinIO integration for .NET Aspire applications. This package provides a simple way to add MinIO, an S3-compatible object storage server, to your Aspire application for managing object storage in development and production environments.
