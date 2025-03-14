@@ -1,4 +1,4 @@
-﻿using Aspire.Hosting.ApplicationModel;
+using Aspire.Hosting.ApplicationModel;
 
 namespace Aspire.Hosting.MinIO;
 
@@ -27,7 +27,8 @@ public static class MinIOResourceBuilderExtensions
                 port: options.ConsolePort,
                 name: MinIOResource.ConsoleEndpointName)
             .ConfigureCredentials(options)
-            .ConfigureVolume(options);
+            .ConfigureVolume(options)
+            .WithArgs("server", "/data", "--console-address", $":{MinIOResource.DefaultConsolePort}");
     }
 
     private static IResourceBuilder<MinIOResource> ConfigureCredentials(

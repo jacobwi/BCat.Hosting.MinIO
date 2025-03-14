@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <!--<TargetFramework>$(DefaultTargetFramework)</TargetFramework>-->
         <ImplicitUsings>enable</ImplicitUsings>
         <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <PackageTags>aspire integration hosting minio s3</PackageTags>
         <Description>Minio support for .NET Aspire.</Description>
-        <Version>8.2.2.0</Version>
+        <Version>9.1.0</Version>
         <Authors>BCat</Authors>
         <PackageIcon>favicon.png</PackageIcon>
         <PackageId>BCat.Aspire.MinIO</PackageId>
         <Title>BCat.Aspire.MinIO</Title>
         <RootNamespace>Aspire.Hosting.MinIO</RootNamespace>
-        <Copyright>Copyright 2024 BCat</Copyright>
+        <Copyright>Copyright 2025 BCat</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
         <!-- Source Link -->
@@ -24,14 +24,14 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
         <!-- Package Info -->
-        <PackageProjectUrl>https://github.com/jacobwi/BCat.Hosting.MailDev</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/jacobwi/BCat.Hosting.MailDev</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/jacobwi/BCat.Hosting.MinIO</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jacobwi/BCat.Hosting.MinIO</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting" Version="8.2.2"/>
+        <PackageReference Include="Aspire.Hosting" Version="9.1.0" />
     </ItemGroup>
     
     <ItemGroup>
